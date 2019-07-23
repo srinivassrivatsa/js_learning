@@ -18,25 +18,52 @@
 </head>
 <body>
     <h1 id="headingTotal"></h1>
-    <input id="inputAmt" type="text">
+    <input id="inputAmt" type="text" placeholder="Enter amount spent"> 
+    <input id="inputDesc" type="text" placeholder="Enter description for expense">
     <button id="btnAddExpense">+</button>
+    <div id="expenseTable"></div>
     <script>
         const headingEL=document.querySelector('#headingTotal');
+            const inputDescEl=document.querySelector('#inputDesc');
             let totalExpense=0;
             headingEL.textContent=totalExpense;
+            const inputElement=document.querySelector('#inputAmt');
+            const allExpenses=[];
+            const expenseTableEl=document.querySelector('#expenseTable');
             function addExpenseToTotal()
             {
-                const inputElement=document.querySelector('#inputAmt');
+                const expenseItem={};
                 const textAmount=inputElement.value;
-                // console.log({textAmount});
+                const textDesc=inputDescEl.value;
+                //  console.log({textAmount,textDesc});
                 const expense=parseInt(textAmount,10);
                 // console.log({expense});
                 totalExpense=expense+totalExpense;
-                console.log({totalExpense});
-                headingEL.textContent=totalExpense;
+                // console.log({totalExpense});
+                
+                expenseItem.desc=textDesc;
+                expenseItem.amount=textAmount;
+                // console.log(expenseItem);
+                allExpenses.push(expenseItem);
+                // console.clear();
+                // console.table(allExpenses);
+                const someText=`Total: ${totalExpense}`
+                headingEL.textContent=someText;
+                const data1=allExpenses[0];
+            const data2=allExpenses[1];
+            const dataText1=`${data1.amount} ::  ${data1.desc}`;
+            const dataText2=`${data2.amount} ::  ${data2.desc}`;
+            const tableText=`
+                <div>${dataText1}</div>
+                <div>${dataText2}</div>
+            `
+            expenseTableEl.innerHTML= tableText;
+                
             }
             const element=document.querySelector('#btnAddExpense');
             element.addEventListener("click",addExpenseToTotal,false);
+            
+            
     </script>
 </body>
 </html>
