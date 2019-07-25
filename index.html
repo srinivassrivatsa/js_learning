@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Personal Expense</title>
-    <style>
+    <!-- <style>
         body
         {
             display: flex;
@@ -14,14 +14,62 @@
             align-items: center;
             height: 100vh;
         }
-    </style>
+    </style> -->
+    <link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+    />
 </head>
 <body>
-    <h1 id="headingTotal"></h1>
-    <input id="inputAmt" type="text" placeholder="Enter amount spent"> 
-    <input id="inputDesc" type="text" placeholder="Enter description for expense">
-    <button id="btnAddExpense">+</button>
-    <div id="expenseTable"></div>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">WExpense</span>
+    </nav>
+    <div class="container-fluid bg-light" style="min-height: 100vh">
+        <h1 id="headingTotal"></h1>
+        <div class="container">
+                <div class="jumbotron mt-4">
+                        <div class="input-group mb-3">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="inputAmt"
+                                placeholder="Amount spent"
+                                aria-label="Amount spent"
+                                aria-describedby="spent in rupee"
+                            />
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="spent in rupee">₹</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="spent at">@</span>
+                            </div>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="inputDesc"
+                                placeholder="spent On"
+                                aria-label="spent On"
+                                aria-describedby="spent at"
+                            />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button" id="btnAddExpense">Add</button>
+                            </div>
+                        </div>
+                    </div>
+            <!-- <div class="jumbotron mt-4">
+            <h1 id="headingTotal"></h1>
+            <input id="inputAmt" type="text" placeholder="Enter amount spent"> 
+            <input id="inputDesc" type="text" placeholder="Enter description for expense">
+            <button id="btnAddExpense">+</button>-->
+            <div id="expenseTable"></div>
+          
+        </div>
+    </div>
+    
     <script>
         const headingEL=document.querySelector('#headingTotal');
         const inputDescEl=document.querySelector('#inputDesc');

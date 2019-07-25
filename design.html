@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-dark bg-dark">
-			<span class="navbar-brand mb-0 h1">Expense App</span>
+			<span class="navbar-brand mb-0 h1">WExpense</span>
 		</nav>
 		<div class="container-fluid bg-light" style="min-height: 100vh">
 			<div class="container">
@@ -28,7 +28,8 @@
 					<div class="input-group mb-3">
 						<input
 							type="text"
-							class="form-control"
+                            class="form-control"
+                            id="inputAmt"
 							placeholder="Amount spent"
 							aria-label="Amount spent"
 							aria-describedby="spent in rupee"
@@ -43,13 +44,14 @@
 						</div>
 						<input
 							type="text"
-							class="form-control"
+                            class="form-control"
+                            id="inputDesc"
 							placeholder="spent On"
 							aria-label="spent On"
 							aria-describedby="spent at"
 						/>
 						<div class="input-group-append">
-							<button class="btn btn-outline-primary" type="button" id="button-addon2">Add</button>
+							<button class="btn btn-outline-primary" type="button" id="btnAddExpense">Add</button>
 						</div>
 					</div>
 				</div>
