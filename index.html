@@ -24,46 +24,37 @@
     <div id="expenseTable"></div>
     <script>
         const headingEL=document.querySelector('#headingTotal');
-            const inputDescEl=document.querySelector('#inputDesc');
-            let totalExpense=0;
-            headingEL.textContent=totalExpense;
-            const inputElement=document.querySelector('#inputAmt');
-            const allExpenses=[];
-            const expenseTableEl=document.querySelector('#expenseTable');
-            function addExpenseToTotal()
+        const inputDescEl=document.querySelector('#inputDesc');
+        let totalExpense=0;
+        headingEL.textContent=totalExpense;
+        const inputElement=document.querySelector('#inputAmt');
+        const allExpenses=[];
+        const expenseTableEl=document.querySelector('#expenseTable');
+        function addExpenseToTotal()
+        {
+            const expenseItem={};
+            const textAmount=inputElement.value;
+            const textDesc=inputDescEl.value;
+            //  console.log({textAmount,textDesc});
+            const expense=parseInt(textAmount,10);
+            // console.log({expense});
+            totalExpense=expense+totalExpense;
+            // console.log({totalExpense});
+            expenseItem.desc=textDesc;
+            expenseItem.amount=textAmount;
+            // console.log(expenseItem);
+            allExpenses.push(expenseItem);
+            const someText=`Total: ${totalExpense}`
+            headingEL.textContent=someText;
+            const allExpenseHTML=allExpenses.map(expense =>
             {
-                const expenseItem={};
-                const textAmount=inputElement.value;
-                const textDesc=inputDescEl.value;
-                //  console.log({textAmount,textDesc});
-                const expense=parseInt(textAmount,10);
-                // console.log({expense});
-                totalExpense=expense+totalExpense;
-                // console.log({totalExpense});
-                
-                expenseItem.desc=textDesc;
-                expenseItem.amount=textAmount;
-                // console.log(expenseItem);
-                allExpenses.push(expenseItem);
-                // console.clear();
-                // console.table(allExpenses);
-                const someText=`Total: ${totalExpense}`
-                headingEL.textContent=someText;
-                const data1=allExpenses[0];
-            const data2=allExpenses[1];
-            const dataText1=`${data1.amount} ::  ${data1.desc}`;
-            const dataText2=`${data2.amount} ::  ${data2.desc}`;
-            const tableText=`
-                <div>${dataText1}</div>
-                <div>${dataText2}</div>
-            `
-            expenseTableEl.innerHTML= tableText;
-                
-            }
-            const element=document.querySelector('#btnAddExpense');
-            element.addEventListener("click",addExpenseToTotal,false);
-            
-            
+                return `<div>${expense.amount} :: ${expense.desc}</div>`
+            });
+            const jointHTMLAllExpense=allExpenseHTML.join("");
+            expenseTableEl.innerHTML= jointHTMLAllExpense;
+        }
+        const element=document.querySelector('#btnAddExpense');
+        element.addEventListener("click",addExpenseToTotal,false);
     </script>
 </body>
 </html>
